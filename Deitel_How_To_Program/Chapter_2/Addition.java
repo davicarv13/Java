@@ -14,12 +14,12 @@ public class Addition{
 		System.out.print( "Enter first integer:" );
 		n1 = input.nextInt(); 
 
-		System.out.print( "Enter first integer:" );
+		System.out.print( "Enter second integer:" );
 		n2 = input.nextInt();
 
 		sum = n1 + n2;
 
 		System.out.println( "Name: " +name );
-		System.out.println( "Sum " +n1+ " e " +n2+ " é:" +sum );
+		System.out.println( "Sum is: " +sum );
 	}
 }
