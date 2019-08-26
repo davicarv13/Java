@@ -1,6 +1,6 @@
 package BookStore;
 
-public class Book implements TaxCalc{
+public class Book{
 	private String title;
 	private String isbn;
 	private double price;
@@ -31,9 +31,5 @@ public class Book implements TaxCalc{
 
 	public int getQuantity(){
 		return this.quantity;
-	}
-
-	public double calcTax(){
-		return this.price * 0.075;
-	}
+	}	
 }

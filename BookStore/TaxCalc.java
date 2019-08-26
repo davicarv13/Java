@@ -1,5 +1,5 @@
 package BookStore;
 
 public interface TaxCalc{
-	public double calcTax();
+	public double calcTax(double price);
 }
