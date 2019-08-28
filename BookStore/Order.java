@@ -6,17 +6,18 @@ public class Order implements TaxCalc{
 	private Book book;
 	private int quantity;
 	private double price;
-	private Client client;
+	private User user;
 
-	public Order(Date orderDate, Book book, int quantity, double price, Client client){
+	public Order(Date orderDate, Book book, int quantity, User user){
 		this.orderDate = orderDate;
 		this.book = book;
 		this.quantity = quantity;
-		this.price = (book.getPrice() * price) + this.calcTax(price);
-		this.client = client;
+		this.price = (book.getPrice() * quantity);
+		this.price += this.calcTax(this.price);
+		this.user = user;
 	}
 
-	public Date getDate(){
+	public Date getOrderDate(){
 		return this.orderDate;
 	}
 
@@ -32,8 +33,8 @@ public class Order implements TaxCalc{
 		return this.price;
 	}
 
-	public Client getClient(){
-		return this.client;
+	public User getUser(){
+		return this.user;
 	}
 
 	public double calcTax(double price){

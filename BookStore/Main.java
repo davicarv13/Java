@@ -228,7 +228,10 @@ public class Main{
 		String systemPass = "Lover23";
 
 		BookList bookList = new BookList();
+		Book book;
 		UserList userList = new UserList();
+		User user;
+		OrderList orderList = new OrderList();
 
 		do{
 			op = indexMenu();
@@ -271,6 +274,31 @@ public class Main{
 										break;
 
 										case 2: //Buy book
+
+											String isbn = JOptionPane.showInputDialog("Enter the ISBN");
+
+											int quantity = Integer.parseInt(JOptionPane.showInputDialog("Enter the quantity"));
+
+											int day = Integer.parseInt(JOptionPane.showInputDialog("Enter the day"));
+
+											int month = Integer.parseInt(JOptionPane.showInputDialog("Enter the month"));
+
+											int year = Integer.parseInt(JOptionPane.showInputDialog("Enter the year"));
+
+											Date orderDate = new Date(day, month, year);
+
+											Order newOrder = client.buyBook(bookList, isbn, quantity, client, orderDate);
+
+											String message;
+
+											if(newOrder != null){
+												message = String.format("Order price" + newOrder.getPrice() + "\nDate :" + newOrder.getOrderDate().getDay() + "/" + newOrder.getOrderDate().getMonth() +  "/" + newOrder.getOrderDate().getYear());
+												JOptionPane.showMessageDialog(null, message);												
+											}
+											else{
+												message = "Error. ISBN not found or book's quantity is not enough\n";
+												JOptionPane.showMessageDialog(null, message);												
+											}
 
 										break;
 									}

@@ -32,6 +32,30 @@ public abstract class User{
 		}
 	}
 
-	
+	public Order buyBook(BookList bookList, String isbn, int quantity, User user, Date orderDate){
 
+		if(bookList.getSize() == 0){
+			return null;
+		}
+		else{
+			for(int j = 0; j < bookList.getSize(); j++){
+
+				if(isbn.equals(bookList.getBook(j).getIsbn())){
+
+					if(quantity <= bookList.getBook(j).getQuantity()){
+
+						Order newOrder = new Order(orderDate, bookList.getBook(j), quantity, user);
+						bookList.getBook(j).setQuantity(bookList.getBook(j).getQuantity() - quantity);
+						return newOrder;
+					}
+					else{
+
+						return null;
+					}
+				}
+			}
+		}
+
+		return null;
+	}
 }
